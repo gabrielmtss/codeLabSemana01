@@ -1,12 +1,16 @@
 interface User {
-
+  name: string;
+  age: number;
+  occupation?: string;
 }
 
 interface Admin {
- 
+  name: string;
+  age: number;
+  role?: string;
 }
 
-export type Person = unknown;
+export type Person = Admin & User;
 
 export const persons: Person[] = [
     {
@@ -32,7 +36,7 @@ export const persons: Person[] = [
 ];
 
 export function logPerson(person: Person) {
-    let additionalInformation: string;
+    let additionalInformation: string | undefined;
     if (person.role) {
         additionalInformation = person.role;
     } else {
